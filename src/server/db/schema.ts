@@ -1,7 +1,6 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
-import { sql } from "drizzle-orm";
 import {
   index,
   pgTableCreator,
@@ -24,7 +23,7 @@ export const posts = createTable(
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }),
     createdAt: timestamp("created_at")
-      .default(sql`CURRENT_TIMESTAMP`)
+      .defaultNow()
       .notNull(),
     updatedAt: timestamp("updatedAt"),
   },
