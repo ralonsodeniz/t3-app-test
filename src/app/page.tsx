@@ -1,8 +1,8 @@
 import { mockImages } from "@/mock/images";
-import { db } from "@/server/db";
+import { getPosts } from "@/server/db/queries/posts";
 
 const HomePage = async () => {
-  const posts = await db.query.posts.findMany();
+  const posts = await getPosts();
 
   return (
     <div className="flex flex-wrap gap-4">
