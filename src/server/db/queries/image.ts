@@ -5,7 +5,7 @@ import { db } from "@/server/db";
 
 export const getImages = cache(
   nextCache(
-    async () =>
+    () =>
       db.query.images.findMany({
         orderBy: (image, { desc }) => desc(image.id),
       }),
@@ -16,7 +16,7 @@ export const getImages = cache(
 
 export const getImage = cache((id: number) =>
   nextCache(
-    async () =>
+    () =>
       db.query.images.findFirst({
         where: (image, { eq }) => eq(image.id, id),
       }),
